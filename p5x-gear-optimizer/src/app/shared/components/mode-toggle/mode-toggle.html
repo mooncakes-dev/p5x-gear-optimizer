@@ -1,0 +1,39 @@
+<button hlmBtn variant="outline" [hlmDropdownMenuTrigger]="menu">
+    @if(themeProvider.isDarkMode()) {
+    <ng-icon hlm size="sm" name="lucideMoon" />
+    } @else {
+    <ng-icon hlm size="sm" name="lucideSun" />
+    }
+</button>
+
+<ng-template #menu>
+    <hlm-dropdown-menu>
+        <hlm-dropdown-menu-label>Theme</hlm-dropdown-menu-label>
+        <hlm-dropdown-menu-separator />
+        <hlm-dropdown-menu-group>
+            <button
+                hlmDropdownMenuItem
+                (click)="setTheme('dark')"
+                [class.font-semibold]="themeProvider.theme() === 'dark'"
+            >
+                🌙 Dark
+            </button>
+
+            <button
+                hlmDropdownMenuItem
+                (click)="setTheme('light')"
+                [class.font-semibold]="themeProvider.theme() === 'light'"
+            >
+                ☀️ Light
+            </button>
+
+            <button
+                hlmDropdownMenuItem
+                (click)="setTheme('system')"
+                [class.font-semibold]="themeProvider.theme() === 'system'"
+            >
+                💻 System
+            </button>
+        </hlm-dropdown-menu-group>
+    </hlm-dropdown-menu>
+</ng-template>
